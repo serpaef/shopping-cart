@@ -28,7 +28,7 @@ function addLoading() {
   const span = document.createElement('span');
   span.className = 'loading';
   span.innerText = 'loading...';
-  document.body.appendChild(span);
+  document.getElementsByClassName('container')[0].appendChild(span);
 }
 
 function removeLoading() {
@@ -108,17 +108,16 @@ function getItemList(list) {
   itemList.forEach((product) => {
     listSection.appendChild(createProductItemElement(product));
   });
+  
+  removeLoading();
 }
 
 // esse é o famoso 'na minha maquina passa'
 function fetchItemList() {
+  addLoading();
   fetch('https://api.mercadolibre.com/sites/MLB/search?q=computador')
-    .then((response) => {
-      addLoading();
-      return response.json();
-    })
-    .then((data) => getItemList(data))
-    .then(() => removeLoading());
+    .then((response) => response.json())
+    .then((data) => getItemList(data));
 }
 
 function clearCart() {
