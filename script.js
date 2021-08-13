@@ -110,6 +110,7 @@ function getItemList(list) {
   });
 }
 
+// esse é o famoso 'na minha maquina passa'
 function fetchItemList() {
   fetch('https://api.mercadolibre.com/sites/MLB/search?q=computador')
     .then((response) => {
