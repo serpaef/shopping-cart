@@ -1,5 +1,8 @@
 function cartItemClickListener(event) {
   // coloque seu código aqui
+  const totalPrice = document.getElementsByClassName('total-price')[0];
+  const targetPrice = event.target.innerText.split('$')[1];
+  totalPrice.innerText = Number(totalPrice.innerText) - Number(targetPrice);
   event.target.remove();
 }
 
@@ -26,6 +29,8 @@ async function getItemById(id) {
   const itemToCart = obj;
   const item = createCartItemElement(itemToCart);
   document.querySelector('.cart__items').appendChild(item);
+  const totalPrice = document.querySelector('.total-price');
+  totalPrice.innerHTML = Number(totalPrice.innerHTML) + obj.salePrice;
 }
 
 function addItemToCart(e) {
@@ -83,6 +88,7 @@ function fetchItemList() {
 function clearCart() {
   document.querySelector('.empty-cart').addEventListener('click', () => {
     document.querySelector('.cart__items').innerHTML = '';
+    document.querySelector('.total-price').innerHTML = 0;
   });
 }
 
