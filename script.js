@@ -4,7 +4,6 @@ function setLS() {
 }
 
 function cartItemClickListener(event) {
-  // coloque seu código aqui
   const totalPrice = document.getElementsByClassName('total-price')[0];
   const targetPrice = event.target.innerText.split('$')[1];
   totalPrice.innerText = Number(totalPrice.innerText) - Number(targetPrice);
@@ -112,7 +111,6 @@ function getItemList(list) {
   removeLoading();
 }
 
-// esse é o famoso 'na minha maquina passa'
 function fetchItemList() {
   addLoading();
   fetch('https://api.mercadolibre.com/sites/MLB/search?q=computador')
